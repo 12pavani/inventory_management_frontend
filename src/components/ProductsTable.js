@@ -52,7 +52,8 @@ const ProductsTable = () => {
   };
 
   useEffect(() => {
-    fetch("https://inventory-management-backend-ppyt.onrender.com/product/")
+    // fetch("https://inventory-management-backend-ppyt.onrender.com/product/")
+    fetch("https://inventory-management-backend-ppyt.onrender.com")
       .then((resp) => resp.json())
       .then((results) => {
         console.log(results);
