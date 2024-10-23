@@ -138,17 +138,16 @@ const AddProducts = () => {
                         />
                     </Form.Group>
 
-                    <Form.Group controlId="Supplier">
-                        <Form.Label>Supplier</Form.Label>
-                        <Form.Control
-                            type="text" // Changed from "number" to "text"
-                            name="Supplier"
-                            value={productInfo.Supplier}
-                            onChange={updateForm}
-                            placeholder="Supplier"
-                            required // Make it a required field
-                        />
-                    </Form.Group>
+                     <Form.Group controlId="Supplier">
+                         <Form.Label>Supplier</Form.Label>
+                         <Form.Control
+                             type="number"
+                             name="Supplier"
+                             value={productInfo.Supplier}
+                             onChange={updateForm}
+                             placeholder="Supplier"
+                         />
+                     </Form.Group>
 
                     <Button variant="primary" type="submit" disabled={isLoading}>
                         {isLoading ? "Submitting..." : "Submit"}
