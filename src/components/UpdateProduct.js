@@ -40,10 +40,14 @@ const UpdateProduct = () => {
         },
         body: JSON.stringify(bodyData),
       });
-
+    
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+    
       const resp = await response.json();
-      console.log('Response:', resp); // Log the response for debugging
-
+      console.log('Response:', resp);  // Log the response for debugging
+    
       if (resp.status === "ok") {
         alert("Product Updated Successfully");
         window.location.href = "/";
@@ -51,9 +55,10 @@ const UpdateProduct = () => {
         alert("Failed to update product");
       }
     } catch (error) {
-      console.error('Error updating product:', error);
+      console.error('Error updating product:', error);  // Log the detailed error
       alert('An error occurred while updating the product.');
     }
+    
 
     setUpdateProductInfo({
       ProductName: "",
