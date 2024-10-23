@@ -66,8 +66,7 @@ const UpdateProduct = () => {
       QuantitySold: "",
       UnitPrice: "",
       Revenue: "",
-      ProductID: "",
-      Supplier: "", // Reset Supplier field after submission
+      ProductID: ""
     });
   };
 
@@ -130,16 +129,16 @@ const UpdateProduct = () => {
             />
           </Form.Group>
 
-          <Form.Group controlId="Supplier">
-            <Form.Label>Supplier</Form.Label>
-            <Form.Control
-              type="text" // Changed to 'text' to allow flexibility in Supplier input
-              name="Supplier"
-              value={updateProductInfo.Supplier}
-              onChange={updateForm}
-              placeholder="Supplier"
-            />
-          </Form.Group>
+           <Form.Group controlId="Supplier">
+             <Form.Label>Supplier</Form.Label>
+             <Form.Control
+               type="number"
+               name="Supplier"
+               value={updateProductInfo.ProductID}
+               onChange={updateForm}
+               placeholder="Supplier"
+             />
+           </Form.Group>
 
           <Button variant="primary" type="submit">
             Submit
