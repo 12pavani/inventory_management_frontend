@@ -24,48 +24,36 @@ const SupplierPage = () => {
 				headers: {
 					'Content-Type': 'application/json',
 				},
-				redirect: 'follow',
-				referrerPolicy: 'no-referrer',
 				body: JSON.stringify({
-					name: supplierDetail['name'],
-					email: supplierDetail['email'],
-					phone: supplierDetail['phone'],
-					company: supplierDetail['company'],
+					name: supplierDetail.name,
+					email: supplierDetail.email,
+					phone: supplierDetail.phone,
+					company: supplierDetail.company,
 				}),
 			});
 
 			const responseData = await response.json();
 			if (responseData.status === 'ok') {
 				alert('Supplier added successfully');
+				resetSupplierDetail();
 			} else {
-				alert('Failed to add Supplier');
+				alert('Failed to add Supplier: ' + responseData.message);
 			}
 		} catch (error) {
 			console.error('Error adding supplier:', error);
 			alert('An error occurred while adding the supplier.');
 		}
-
-		// Reset the supplier detail
-		setSupplierDetail({
-			name: '',
-			email: '',
-			phone: '',
-			company: '',
-			emailTitle: '',
-			email_msg: '',
-			id: '',
-		});
 	};
 
 	const handleUpdate = async (e) => {
 		e.preventDefault();
 
-		if (!supplierDetail['id']) {
+		if (!supplierDetail.id) {
 			alert('Please enter a Supplier ID to update.');
 			return;
 		}
 
-		const url = `${BASE_URL}/${supplierDetail['id']}`;
+		const url = `${BASE_URL}/${supplierDetail.id}`;
 
 		try {
 			const response = await fetch(url, {
@@ -76,13 +64,11 @@ const SupplierPage = () => {
 				headers: {
 					'Content-Type': 'application/json',
 				},
-				redirect: 'follow',
-				referrerPolicy: 'no-referrer',
 				body: JSON.stringify({
-					name: supplierDetail['name'],
-					email: supplierDetail['email'],
-					phone: supplierDetail['phone'],
-					company: supplierDetail['company'],
+					name: supplierDetail.name,
+					email: supplierDetail.email,
+					phone: supplierDetail.phone,
+					company: supplierDetail.company,
 				}),
 			});
 
@@ -90,7 +76,7 @@ const SupplierPage = () => {
 			if (responseData.status === 'ok') {
 				alert('Supplier updated successfully');
 			} else {
-				alert('Failed to update Supplier');
+				alert('Failed to update Supplier: ' + responseData.message);
 			}
 		} catch (error) {
 			console.error('Error updating supplier:', error);
@@ -99,12 +85,12 @@ const SupplierPage = () => {
 	};
 
 	const handleDelete = async () => {
-		if (!supplierDetail['id']) {
+		if (!supplierDetail.id) {
 			alert('Please enter a Supplier ID to delete.');
 			return;
 		}
 
-		const url = `${BASE_URL}/${supplierDetail['id']}`;
+		const url = `${BASE_URL}/${supplierDetail.id}`;
 
 		try {
 			const response = await fetch(url, {
@@ -116,18 +102,10 @@ const SupplierPage = () => {
 
 			const result = await response.json();
 			if (result.status === 'ok') {
-				setSupplierDetail({
-					name: '',
-					email: '',
-					phone: '',
-					company: '',
-					emailTitle: '',
-					email_msg: '',
-					id: '',
-				});
 				alert('Supplier deleted successfully');
+				resetSupplierDetail();
 			} else {
-				alert('Supplier deletion failed');
+				alert('Supplier deletion failed: ' + result.message);
 			}
 		} catch (error) {
 			console.error('Error deleting supplier:', error);
@@ -138,12 +116,12 @@ const SupplierPage = () => {
 	const handleEmail = async (e) => {
 		e.preventDefault();
 
-		if (!supplierDetail['id']) {
+		if (!supplierDetail.id) {
 			alert('Please enter a Supplier ID to send email.');
 			return;
 		}
 
-		const url = `https://inventory-management-backend-ppyt.onrender.com/email/${supplierDetail['id']}`;
+		const url = `https://inventory-management-backend-ppyt.onrender.com/email/${supplierDetail.id}`;
 
 		try {
 			const response = await fetch(url, {
@@ -154,11 +132,9 @@ const SupplierPage = () => {
 				headers: {
 					'Content-Type': 'application/json',
 				},
-				redirect: 'follow',
-				referrerPolicy: 'no-referrer',
 				body: JSON.stringify({
-					message: supplierDetail['email_msg'],
-					subject: supplierDetail['emailTitle'],
+					message: supplierDetail.email_msg,
+					subject: supplierDetail.emailTitle,
 				}),
 			});
 
@@ -166,17 +142,29 @@ const SupplierPage = () => {
 			if (responseData.status === 'ok') {
 				alert('Email sent successfully');
 			} else {
-				alert('Failed to send email');
+				alert('Failed to send email: ' + responseData.message);
 			}
 		} catch (error) {
 			console.error('Error sending email:', error);
 			alert('An error occurred while sending the email.');
 		}
 
-		setSupplierDetail({
+		setSupplierDetail((prev) => ({
+			...prev,
 			emailTitle: '',
 			email_msg: '',
-			id: supplierDetail['id'],
+		}));
+	};
+
+	const resetSupplierDetail = () => {
+		setSupplierDetail({
+			name: '',
+			email: '',
+			phone: '',
+			company: '',
+			emailTitle: '',
+			email_msg: '',
+			id: '',
 		});
 	};
 
@@ -220,7 +208,7 @@ const SupplierPage = () => {
 					<Form.Group controlId='phone'>
 						<Form.Label>Phone Number</Form.Label>
 						<Form.Control
-							type='number'
+							type='tel'
 							name='phone'
 							value={supplierDetail.phone}
 							onChange={updateForm}
@@ -283,6 +271,7 @@ const SupplierPage = () => {
 };
 
 export default SupplierPage;
+
 
 
 
