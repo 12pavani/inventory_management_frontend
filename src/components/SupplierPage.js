@@ -173,13 +173,13 @@ const SupplierPage = () => {
 			<Card.Body>
 				<Form>
 					<Form.Group controlId='id'>
-						<Form.Label>Supplier ID</Form.Label>
+						<Form.Label>Product ID</Form.Label>
 						<Form.Control
 							type='text'
 							name='id'
 							value={supplierDetail.id}
 							onChange={updateForm}
-							placeholder='Supplier ID'
+							placeholder='Product ID'
 						/>
 					</Form.Group>
 
@@ -253,9 +253,10 @@ const SupplierPage = () => {
 						Update
 					</Button>
 
-					<Button onClick={handleAdd} className='btn btn-outline-primary m-1' variant='primary'>
-						Add Supplier
-					</Button>
+					<Button onClick={handleAdd} className='btn btn-outline-primary m-1' variant='primary' style={{ color: 'white' }}>
+                        Add Supplier
+                    </Button>
+
 
 					<Button onClick={handleEmail} className='btn btn-outline-secondary m-1' variant='primary'>
 						Send Email
