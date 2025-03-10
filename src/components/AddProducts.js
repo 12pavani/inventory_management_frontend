@@ -24,7 +24,7 @@ const AddProducts = () => {
         console.log(productInfo);
         
         // Update the backend URL
-        const url = "https://inventory-management-backend-ppyt.onrender.com/product/" + productInfo['Supplier'];
+        const url = "https://inventory-management-app-backend-new.onrender.com/product/" + productInfo['Supplier'];
 
         try {
             const response = await fetch(url, {

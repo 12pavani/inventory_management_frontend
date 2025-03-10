@@ -15,7 +15,7 @@ const UpdateProduct = () => {
   const postData = async (e) => {
     e.preventDefault();
 
-    const url = `https://inventory-management-backend-ppyt.onrender.com/product/${updateProductInfo["ProductID"]}`;
+    const url = `https://inventory-management-app-backend-new.onrender.com/product/${updateProductInfo["ProductID"]}`;
 
     // Log the data to inspect
     const bodyData = {

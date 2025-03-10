@@ -12,7 +12,7 @@ const ProductsTable = () => {
 
   const handleDelete = async (id) => {
     try {
-      const resp = await fetch("https://inventory-management-backend-ppyt.onrender.com/product/" + id, {
+      const resp = await fetch("https://inventory-management-app-backend-new.onrender.com/product/" + id, {
         method: "DELETE",
         headers: {
           accept: "application/json",
@@ -52,7 +52,7 @@ const ProductsTable = () => {
   };
 
   useEffect(() => {
-    fetch("https://inventory-management-backend-ppyt.onrender.com/product")
+    fetch("https://inventory-management-app-backend-new.onrender.com/product")
       .then((resp) => resp.json())
       .then((results) => {
         console.log(results);

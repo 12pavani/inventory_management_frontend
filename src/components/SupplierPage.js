@@ -10,7 +10,7 @@ const SupplierPage = () => {
 	};
 
 	// Change the base URL to your deployed backend
-	const BASE_URL = 'https://inventory-management-backend-ppyt.onrender.com/supplier';
+	const BASE_URL = 'https://inventory-management-app-backend-new.onrender.com/supplier';
 
 	const handleAdd = async (e) => {
 		e.preventDefault();
@@ -121,7 +121,7 @@ const SupplierPage = () => {
 			return;
 		}
 
-		const url = `https://inventory-management-backend-ppyt.onrender.com/email/${supplierDetail.id}`;
+		const url = `https://inventory-management-app-backend-new.onrender.com/email/${supplierDetail.id}`;
 
 		try {
 			const response = await fetch(url, {
