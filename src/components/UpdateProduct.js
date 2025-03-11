@@ -133,10 +133,10 @@ const UpdateProduct = () => {
              <Form.Label>Product ID</Form.Label>
              <Form.Control
                type="number"
-               name="Supplier"
+               name="Product ID"
                value={updateProductInfo.ProductID}
                onChange={updateForm}
-               placeholder="Supplier"
+               placeholder="Product ID"
              />
            </Form.Group>
 
