@@ -130,7 +130,7 @@ const UpdateProduct = () => {
           </Form.Group>
 
            <Form.Group controlId="Product ID">
-             <Form.Label>Supplier</Form.Label>
+             <Form.Label>Product ID</Form.Label>
              <Form.Control
                type="number"
                name="Supplier"
