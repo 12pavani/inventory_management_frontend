@@ -129,7 +129,7 @@ const UpdateProduct = () => {
             />
           </Form.Group>
 
-           <Form.Group controlId="Supplier">
+           <Form.Group controlId="Product ID">
              <Form.Label>Supplier</Form.Label>
              <Form.Control
                type="number"
